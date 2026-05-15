@@ -1,0 +1,116 @@
+{
+	sport:[
+        {
+            	"Nazwa": "Meczyki.pl",
+        	"Link": "https://www.meczyki.pl"
+        },
+        {
+        	"Nazwa": "Przegląd Sportowy",
+        	"Link": "https://przegladsportowy.onet.pl"
+        },
+	{
+		"Nazwa": "WP sportowe fakty",
+		"Link": "https://sportowefakty.wp.pl"
+	},
+	{
+		"Nazwa": "Eurosport",
+		"Link": "https://eurosport.tvn24.pl"
+	},
+	{
+		"Nazwa": "Polsat Sport",
+		"Link": "https://polsatsport.pl"
+	}
+    ],
+
+    "ekonomia":[
+        { 
+		"Nazwa": "Business Insider Polska",
+		"Link": "https://businessinsider.com.pl"
+	},
+        {
+		"Nazwa": "Bankier.pl",
+		"Link": "https://bankier.pl"
+		
+	},
+	{
+		"Nazwa": "Rzeczpospolita-Ekonomia",
+		"Link": "https://rp.pl/ekonomia"
+	},
+	{
+		"Nazwa": "Puls Biznesu",
+		"Link": "https://pb.pl"
+	},
+	{
+		"Nazwa": "300Gospodarka",
+		"Link": "https://300gospodarka.pl"
+	}
+
+    ],
+
+    "polityka":[
+	{
+		"Nazwa": "Rzeczpospolita",
+		"Link":	"https://rp.pl/polityka"
+	},
+	{
+		"Nazwa": "Dziennik Gazeta Prawna",
+		"Link": "https://gazetaprawna.pl"
+	},
+	{
+		"Nazwa": "Demagog",
+		"Link": "https://demagog.org.pl"
+	},
+	{
+		"Nazwa": "Do Rzeczy",
+		"Link": "https://dorzeczy.pl"
+	},
+	{	"Nazwa": "Polityka",
+		"Link": "https://polityka.pl"
+	}
+    ],
+    "zdrowie":[
+	{
+		"Name": "Medycyna Praktyczna",
+		"Link": "https://mp.pl"
+	},
+	{
+		"Name": "Medonet",
+		"Link": "https://medonet.pl"
+	},	
+	{
+		"Name": "Rynek Zdrowia",
+		"Link": "https://rynekzdrowia.pl"
+	},
+	{
+		"Name": "Nauka w Polsce - Zdrowie",
+		"Link": "https://zdrowie.pap.pl"
+	},	
+	{
+		"Name": "Podyplomie.pl",
+		"Link": "https://podyplomie.pl"
+	}
+     ],
+
+	"IT":[
+	{
+		"Name": "ITwiz",
+		"Link": "https://itwiz.pl"
+	},
+	{
+		"Name": "Antyweb",
+		"Link": "https://antyweb.pl"
+	},	
+	{
+		"Name": "Just Geek IT",
+		"Link": "https://justgeek.it"
+	},
+	{
+		"Name": "Bulldogjob",
+		"Link": "https://bulldogjob.pl"
+	},	
+	{
+		"Name": "PurePC",
+		"Link": "https://purepc.pl"
+	}
+     ]
+}
