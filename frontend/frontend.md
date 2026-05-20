@@ -1,12 +1,14 @@
 # FRONTEND
 
 ## Folder Structure
-.   
-├── images/   
-│   ├── logo.png   
-│   └── favicon.ico   
-├── index.html   
-└── style.css   
+```
+.
+├── images/
+│   ├── logo.png
+│   └── favicon.ico
+├── index.html
+└── style.css
+```
 
 ## Files:
 logo.png -> image of our logo   
