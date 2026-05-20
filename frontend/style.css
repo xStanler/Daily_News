@@ -1,0 +1,91 @@
+:root {
+	--background: #F8FFE5;
+	--font-color: #EFF8FB; 
+	--font-dark: #071013;
+	--font-selected: #315D7D;
+	--primary-color: #7FC8F8;
+	--primary-border: #5AA9E6;
+	--accent-color: #F07167;
+	--accent-border: #964F4A;
+	--article-color: #F6F8F1;
+	--article-border: #D8EAF6;
+	@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--background);
+	color: var(--font-color);
+	font-family: "Iosevka Charon", monospace;
+	box-sizing: border-box;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+nav {
+	font-size: 20px;
+	width: 100%;
+	height: 10rem;
+	background-color: var(--primary-color); 
+	border-bottom: var(--primary-border) 3px solid;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#logo{
+	padding: 2rem;
+	height: 6rem;
+}
+
+#nav-buttons {
+	display: inline-flex;
+	width: 63rem;
+	justify-content: space-around;
+	margin-right: 1rem;
+}
+
+.nav-btn {
+	text-align: center;
+	width: 9rem;
+	height: 2rem;
+	padding: 1rem;
+}
+
+.nav-btn:hover {
+	border-bottom: var(--primary-border) 3px solid;
+	margin-bottom: -3px;
+}
+
+.nav-btn-selected {
+	color: var(--font-selected);
+	font-weight: bold;
+}
+
+.articles {
+	margin: 10rem;
+	color: var(--font-dark);
+	min-height: 15rem;
+}
+
+.article {
+	background-color: var(--article-color);
+	min-height: 5rem;
+	padding: 3rem;
+	border-radius: 25px;
+	border: var(--article-border) 3px solid;
+	margin-bottom: 5rem;
+}
+
+footer {
+	width: 100%;
+	height: 3rem;
+	padding: 3rem 0;
+	text-align: center;
+	background-color: var(--accent-color);
+	border-top: var(--accent-border) 3px solid;
+}
+

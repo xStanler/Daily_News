@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Daily News</title>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" href="/frontend/style.css"/>
+
+		<script src="https://unpkg.com/htmx.org@2.0.4"></script>
+
+		<script defer
+			src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js">
+		</script>
+		<link rel="icon" type="image/x-icon" href="/frontend/images/favicon.ico"
+	</head>
+	<body>
+		<nav>
+			<a>
+				<img id="logo" hx-get="/home" hx-target=".articles" src="/frontend/images/logo.png" >
+			</a>
+			<div id="nav-buttons">
+				<a>
+					<div class="nav-btn" hx-get="/articles/sport" hx-target=".articles" onclick="selectButton(this)">Sport</div>
+				</a>
+				<a>
+					<div class="nav-btn" hx-get="/articles/ekonomia" hx-target=".articles" onclick="selectButton(this)">Ekonomia</div>
+				</a>
+				<a>
+					<div class="nav-btn" hx-get="/articles/polityka" hx-target=".articles" onclick="selectButton(this)">Polityka</div>
+				</a>
+				<a>
+					<div class="nav-btn" hx-get="/articles/zdrowie" hx-target=".articles" onclick="selectButton(this)">Zdrowie</div>
+				</a>
+				<a>
+					<div class="nav-btn" hx-get="/articles/technologia" hx-target=".articles" onclick="selectButton(this)">Technologia</div>
+				</a>
+			</div>
+		</nav>
+		<main>
+			<div class="articles" hx-get="/home" hx-trigger="load">
+			</div>
+		</main>
+		<footer>
+			© 2026 Daily News.
+		</footer>
+
+		<script>
+			function selectButton(element) {
+				const currentActive = document.querySelector(".nav-btn-selected");
+
+				if(currentActive) {
+					currentActive.classList.remove("nav-btn-selected");
+				}
+
+				element.classList.add("nav-btn-selected");
+			}
+		</script>
+	</body>
+</html>
