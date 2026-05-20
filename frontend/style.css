@@ -2,6 +2,7 @@
 	--background: #F8FFE5;
 	--font-color: #EFF8FB; 
 	--font-dark: #071013;
+	--font-selected: #315D7D;
 	--primary-color: #7FC8F8;
 	--primary-border: #5AA9E6;
 	--accent-color: #F07167;
@@ -59,6 +60,11 @@ nav {
 	margin-bottom: -3px;
 }
 
+.nav-btn-selected {
+	color: var(--font-selected);
+	font-weight: bold;
+}
+
 .articles {
 	margin: 10rem;
 	color: var(--font-dark);
@@ -82,3 +88,4 @@ footer {
 	background-color: var(--accent-color);
 	border-top: var(--accent-border) 3px solid;
 }
+

@@ -19,19 +19,19 @@
 			</a>
 			<div id="nav-buttons">
 				<a>
-					<div class="nav-btn" hx-get="/articles/sport" hx-target=".articles">Sport</div>
+					<div class="nav-btn" hx-get="/articles/sport" hx-target=".articles" onclick="selectButton(this)">Sport</div>
 				</a>
 				<a>
-					<div class="nav-btn" hx-get="/articles/ekonomia" hx-target=".articles">Ekonomia</div>
+					<div class="nav-btn" hx-get="/articles/ekonomia" hx-target=".articles" onclick="selectButton(this)">Ekonomia</div>
 				</a>
 				<a>
-					<div class="nav-btn" hx-get="/articles/polityka" hx-target=".articles">Polityka</div>
+					<div class="nav-btn" hx-get="/articles/polityka" hx-target=".articles" onclick="selectButton(this)">Polityka</div>
 				</a>
 				<a>
-					<div class="nav-btn" hx-get="/articles/zdrowie" hx-target=".articles">Zdrowie</div>
+					<div class="nav-btn" hx-get="/articles/zdrowie" hx-target=".articles" onclick="selectButton(this)">Zdrowie</div>
 				</a>
 				<a>
-					<div class="nav-btn" hx-get="/articles/technologia" hx-target=".articles">Technologia</div>
+					<div class="nav-btn" hx-get="/articles/technologia" hx-target=".articles" onclick="selectButton(this)">Technologia</div>
 				</a>
 			</div>
 		</nav>
@@ -42,5 +42,17 @@
 		<footer>
 			© 2026 Daily News.
 		</footer>
+
+		<script>
+			function selectButton(element) {
+				const currentActive = document.querySelector(".nav-btn-selected");
+
+				if(currentActive) {
+					currentActive.classList.remove("nav-btn-selected");
+				}
+
+				element.classList.add("nav-btn-selected");
+			}
+		</script>
 	</body>
 </html>
