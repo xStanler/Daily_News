@@ -1,17 +1,17 @@
 # FRONTEND
 
 ## Folder Structure
-.
-├── images/
-│   ├── logo.png
-│   └── favicon.ico
-├── index.html
-└── style.css
+.   
+├── images/   
+│   ├── logo.png   
+│   └── favicon.ico   
+├── index.html   
+└── style.css   
 
 ## Files:
-logo.png -> image of our logo
-favicon.ico -> favicon of our site
-index.html -> main page enhanced by htmx
+logo.png -> image of our logo   
+favicon.ico -> favicon of our site   
+index.html -> main page enhanced by htmx   
 style.css -> styles of index.html
 
 ## Key functionalities:
