@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 :root {
 	--background: #F8FFE5;
 	--font-color: #EFF8FB; 
@@ -9,7 +11,6 @@
 	--accent-border: #964F4A;
 	--article-color: #F6F8F1;
 	--article-border: #D8EAF6;
-	@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 }
 
 body {
@@ -26,9 +27,14 @@ a:hover {
 }
 
 nav {
+	background-color: black;
+}
+
+nav {
 	font-size: 20px;
 	width: 100%;
-	height: 10rem;
+	min-height: 5rem;
+	height: 12vh;
 	background-color: var(--primary-color); 
 	border-bottom: var(--primary-border) 3px solid;
 	display: inline-flex;
@@ -37,22 +43,21 @@ nav {
 }
 
 #logo{
-	padding: 2rem;
-	height: 6rem;
+	padding: 2vh 2vw;
+	height: 8vh;
+	min-height: 3rem;
 }
 
 #nav-buttons {
 	display: inline-flex;
-	width: 63rem;
+	width: 64vw;
 	justify-content: space-around;
-	margin-right: 1rem;
+	margin-right: 1vw;
 }
 
 .nav-btn {
 	text-align: center;
-	width: 9rem;
-	height: 2rem;
-	padding: 1rem;
+	padding: 1vh 1vw;
 }
 
 .nav-btn:hover {
@@ -66,24 +71,23 @@ nav {
 }
 
 .articles {
-	margin: 10rem;
+	margin: 20vh 15vw;
+	min-height: 37vh;
 	color: var(--font-dark);
-	min-height: 15rem;
 }
 
 .article {
 	background-color: var(--article-color);
-	min-height: 5rem;
+	min-height: 15vh;
 	padding: 3rem;
 	border-radius: 25px;
 	border: var(--article-border) 3px solid;
-	margin-bottom: 5rem;
+	margin-bottom: 10vh;;
 }
 
 footer {
 	width: 100%;
-	height: 3rem;
-	padding: 3rem 0;
+	padding: 4vh 0;
 	text-align: center;
 	background-color: var(--accent-color);
 	border-top: var(--accent-border) 3px solid;
