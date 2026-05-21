@@ -1,18 +1,14 @@
 import requests 
-from fastapi import FastAPI
-import uvicorn
 import json
 from bs4 import BeautifulSoup
-app=FastAPI()
 
 with open('research.json','r', encoding='utf-8')as plik:
     wszystkie=json.load(plik)
 
-@app.get("/szukaj")
 
 def pobierz_artykuly(kategoria:  str):
     strony_do_odwiedzenia=wszystkie.get(kategoria)
-    
+    print(strony_do_odwiedzenia) 
     if not strony_do_odwiedzenia:
         return {"błąd": f"Nie znaleziono kategorii: {kategoria}"}
     
@@ -48,6 +44,5 @@ def pobierz_artykuly(kategoria:  str):
     return {"kategoria": kategoria, "rezultaty": wyniki}
 
 if __name__=="__main__":
-        uvicorn.run(app, host="127.0.0.1", port=8000)
         
 
