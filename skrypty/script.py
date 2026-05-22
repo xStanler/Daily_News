@@ -1,10 +1,7 @@
 import requests
-import uvicorn
 from bs4 import BeautifulSoup
-from fastapi import FastAPI 
 import json
 
-app=FastAPI()
 
 with open('research.json','r',encoding='utf-8') as plik:
     wszystkie=json.load(plik)
@@ -40,7 +37,6 @@ def obrobka(link, nazwa, naglowki):
     except Exception as e:
         return {"Portal": nazwa, "Status": f"Awaria przy czytaniu: {str(e)}"}
 
-@app.get("/szukaj")
 
 def pobierz_artykul(kategoria):
     to_visit=wszystkie.get(kategoria)
@@ -92,5 +88,3 @@ def pobierz_artykul(kategoria):
             
     return {"kategoria": kategoria, "rezultaty": wyniki}
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
