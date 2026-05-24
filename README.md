@@ -1,6 +1,6 @@
 # **Daily News**
 
-**Welcome to the Daily News project.** Daily News to aplikacja webowa, której głównym zadaniem jest automatyczne agregowanie, selekcjonowanie oraz podsumowywanie najważniejszych informacji z poprzedniego dnia. Narzędzie pobiera dane z wybranych stron internetowych oraz dziedzin, pozwalając użytkownikowi na szybki przegląd najważniejszych wydarzeń bez konieczności przeglądania dziesiątek portali informacyjnych.
+**Welcome to the Daily News project.** Daily News is a web application whose main purpose is to automatically aggregate, select, and summarize the most important information from the previous day. The tool retrieves data from selected websites and fields, allowing users to quickly review the most important events without having to browse dozens of news portals.
 
 Project Lead: *Stanisław Chmielewski*
 
@@ -23,13 +23,13 @@ Frontend: HTMX, HTML/CSS
 DevOps: Docker, Kubernetes
 
 ## Project Structure:
-*Struktura katalogów jest w trakcie rozwoju.*
+*The directory structure is under development.*
 
-:computer: **[app-entry]**: *Główny plik uruchomieniowy aplikacji FastAPI.*
+:computer: **[app-entry]**: *The main FastAPI application runtime file.*
 
-:computer: **[ui-templates]**: *Warstwa wizualna aplikacji wykorzystująca HTMX do dynamicznego ładowania treści bez przeładowywania strony.*
+:computer: **[ui-templates]**: *The visual layer of the application uses HTMX to dynamically load content without reloading the page.*
 
-:computer: **[scraper-core]**: *Skrypty odpowiedzialne za crawlery i scraping danych z zewnętrznych serwisów informacyjnych.*
+:computer: **[scraper-core]**: *Scripts responsible for crawlers and scraping data from external news services.*
 
 
 ## Team & Roles:
@@ -43,28 +43,28 @@ DevOps: Docker, Kubernetes
 ## Future Plans:
 
 ### 1. Database Integration
-* Wdrożenie bazy danych (SQL/NoSQL) do logowania i przechowywania artykułów.
-* Sekcje dla powiązanych oraz najnowszych artykułów (*Podobne artykuły / Recent*).
+* Implementation of a database (SQL/NoSQL) for logging and storing articles. *
+*  Sections for related and recent articles (*Similar Articles / Recent*).
 
-### 2. Rozbudowa Kategorii Tematycznych
-* Filtrowanie i podział wiadomości na kluczowe dziedziny:
-  * Sport
-  * Polityka
-  * Świat
+### 2. Expansion of Thematic Categories
+* Filtering and categorizing news into key areas:
+  * Sports
+  * Politics
+  * World
   * IT
-  * Zdrowie
-  * Nauka
+  * Health
+  * Science
 
 ### 3. AI Integration
-* Wykorzystanie sztucznej inteligencji do generowania dynamicznych podsumowań.
-* Implementacja zaawansowanego filtra duplikatów, aby unikać powtarzających się wiadomości z różnych źródeł.
+* Using artificial intelligence to generate dynamic summaries. *
+* Implementing an advanced duplicate filter to avoid duplicate messages from different sources.
 
 ---
 
 ## FAQ:
 
->### 1. Dlaczego tworzycie tę aplikację?
-> Głównym celem projektu jest nauka nowoczesnych technologii (FastAPI, HTMX, Docker/Kubernetes) w praktyce, podwyższenie naszych kompetencji programistycznych oraz po prostu dobra zabawa przy wspólnym projekcie.
+>### 1. Why are you creating this app?
+> The main goal of the project is to learn modern technologies (FastAPI, HTMX, Docker/Kubernetes) in practice, improve our programming skills, and simply have fun working on a collaborative project.
 
->### 2. Skąd wziął się pomysł na Daily News?
-> Pomysłodawcą projektu jest Stanisław, który dostrzegł potrzebę stworzenia prostego, spersonalizowanego agregatora newsów pozbawionego szumu informacyjnego i clickbaitów.
+>### 2. Where did the idea for Daily News come from?
+> The project was conceived by Stanisław, who recognized the need to create a simple, personalized news aggregator free of noise and clickbait.
