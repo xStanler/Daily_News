@@ -1,26 +1,31 @@
 {
-    "sport": [
+   "sport": [
         {
             "Nazwa": "Meczyki.pl",
-            "Link": "https://www.meczyki.pl"
+            "Link": "https://www.meczyki.pl",
+            "Selektor": ".hero a.hero-link"
         },
         {
             "Nazwa": "Przegląd Sportowy",
-            "Link": "https://przegladsportowy.onet.pl"
+            "Link": "https://przegladsportowy.onet.pl",
+            "Selektor": ".ods-c-card-wrapper a"
         },
         {
             "Nazwa": "WP sportowe fakty",
-            "Link": "https://sportowefakty.wp.pl"
+            "Link": "https://sportowefakty.wp.pl",
+            "Selektor": "#livebox a.liveitem__link"
         },
         {
             "Nazwa": "Eurosport",
-            "Link": "https://eurosport.tvn24.pl"
+            "Link": "https://eurosport.tvn24.pl",
+            "Selektor": "div[data-testid=\"organism-editorial-feed-block\"] a"
         },
         {
             "Nazwa": "Polsat Sport",
-            "Link": "https://polsatsport.pl"
+            "Link": "https://polsatsport.pl",
+            "Selektor": "#sg_slider article.news a"
         }
-    ],
+    ],    
     "ekonomia": [
         {
             "Nazwa": "Business Insider Polska",
