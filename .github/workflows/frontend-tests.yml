@@ -2,9 +2,9 @@ name: Frontend Tests
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [maaster]
 
 jobs:
   playwright:
