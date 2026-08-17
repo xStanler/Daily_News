@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Daily News - Minimalist Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&amp;family=Work+Sans:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/htmx.org@2.0.4"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#ffdc90",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#5a4304",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-high": "#e6e8ea",
+                    "tertiary-fixed-dim": "#b4c5ff",
+                    "outline-variant": "#c6c6cd",
+                    "on-error": "#ffffff",
+                    "outline": "#76777d",
+                    "on-primary-fixed": "#131b2e",
+                    "on-surface-variant": "#45464d",
+                    "primary": "#000000",
+                    "tertiary": "#000000",
+                    "surface-tint": "#565e74",
+                    "on-primary": "#ffffff",
+                    "on-background": "#191c1e",
+                    "secondary-fixed": "#ffdf9a",
+                    "primary-fixed-dim": "#bec6e0",
+                    "tertiary-fixed": "#dbe1ff",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "tertiary-container": "#00174b",
+                    "surface-container": "#eceef0",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f6",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#00174b",
+                    "on-primary-container": "#7c839b",
+                    "secondary": "#745b1c",
+                    "background": "#f7f9fb",
+                    "primary-container": "#131b2e",
+                    "on-secondary-container": "#785f20",
+                    "surface": "#f7f9fb",
+                    "inverse-primary": "#bec6e0",
+                    "on-tertiary-container": "#497cff",
+                    "on-surface": "#191c1e",
+                    "secondary-fixed-dim": "#e4c379",
+                    "on-tertiary-fixed-variant": "#003ea8",
+                    "surface-bright": "#f7f9fb",
+                    "primary-fixed": "#dae2fd",
+                    "inverse-surface": "#2d3133",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed": "#251a00",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "stack-lg": "32px",
+                    "stack-md": "16px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "stack-sm": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "display-lg": [
+                            "Newsreader"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-caps": [
+                            "Work Sans"
+                    ],
+                    "display-lg-mobile": [
+                            "Newsreader"
+                    ],
+                    "label-md": [
+                            "Work Sans"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Newsreader"
+                    ],
+                    "headline-sm": [
+                            "Newsreader"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-sm": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script>
+        function selectButton(selectedElement) {
+            const buttons = document.querySelectorAll('ul li');
+            buttons.forEach(btn => {
+                btn.className = "text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 cursor-pointer active:opacity-70 whitespace-nowrap";
+            });
+            selectedElement.className = "text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 whitespace-nowrap cursor-pointer active:opacity-70";
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased pt-[104px]">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-inverse-surface fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-auto py-stack-sm">
+<div class="font-display-lg text-display-lg font-bold text-primary dark:text-inverse-primary hidden md:block cursor-pointer" hx-get="/home" hx-target=".articles">
+                Daily News
+            </div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary dark:text-inverse-primary md:hidden cursor-pointer" hx-get="/home" hx-target=".articles">
+                Daily News
+            </div>
+<ul class="flex space-x-6 items-center font-body-md text-body-md mt-4 md:mt-0 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+<li class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 cursor-pointer active:opacity-70 whitespace-nowrap" hx-get="/articles/sport" hx-target=".articles" onclick="selectButton(this)">Sport</li>
+<li class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 cursor-pointer active:opacity-70 whitespace-nowrap" hx-get="/articles/polityka" hx-target=".articles" onclick="selectButton(this)">Politics</li>
+<li class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 whitespace-nowrap cursor-pointer active:opacity-70" hx-get="/articles/technologia" hx-target=".articles" onclick="selectButton(this)">IT</li>
+<li class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 cursor-pointer active:opacity-70 whitespace-nowrap" hx-get="/articles/ekonomia" hx-target=".articles" onclick="selectButton(this)">World</li>
+<li class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 cursor-pointer active:opacity-70 whitespace-nowrap" hx-get="/articles/zdrowie" hx-target=".articles" onclick="selectButton(this)">Health</li>
+<li class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 cursor-pointer active:opacity-70 whitespace-nowrap" hx-get="/articles/nauka" hx-target=".articles" onclick="selectButton(this)">Science</li>
+</ul>
+<div class="flex items-center space-x-4 text-primary dark:text-inverse-primary mt-4 md:mt-0">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors duration-200" data-icon="search">search</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors duration-200" data-icon="person">person</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-[800px] mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg flex flex-col gap-stack-lg">
+<!-- Daily Summary AI Badge -->
+<section class="bg-secondary/10 border border-secondary p-6 rounded-lg relative overflow-hidden">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h2 class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">AI Daily Summary</h2>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                Today's tech landscape is dominated by a major breakthrough in quantum processing speeds, while political spheres react to newly proposed global data privacy regulations. Meanwhile, scientific journals are publishing new findings on deep-sea ecosystems discovered late last week.
+            </p>
+</section>
+<!-- Linear Feed -->
+<div class="articles flex flex-col gap-8" hx-get="/home" hx-trigger="load">
+<!-- Article 1 -->
+<article class="flex flex-col-reverse md:flex-row gap-6 border-b border-outline-variant pb-8 group">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1 h-1 rounded-full bg-primary"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">IT</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3 cursor-pointer group-hover:underline decoration-1 underline-offset-4">Quantum Processors Breach Exascale Threshold in Latest Lab Tests</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">
+                            Researchers at standard institutes have successfully maintained quantum coherence at unprecedented scales, potentially accelerating drug discovery and complex climate modeling.
+                        </p>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm font-label-md">
+<span>TechDaily</span>
+<span>•</span>
+<span>2h ago</span>
+</div>
+</div>
+<div class="w-full md:w-[240px] h-[160px] md:h-auto shrink-0 relative overflow-hidden rounded">
+<img class="object-cover w-full h-full absolute inset-0" data-alt="A macro photograph of a glowing quantum processor chip in a sterile laboratory setting. Crisp, sharp focus, cool blue lighting with bright metallic highlights. Professional editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeOaw7F92eY4AF-sX01dBfbWzRG6DG4u5PC2n0XxQ9HJWUJpHGKO6RfFcWFWU-kT-bYOGRuShWULeTbSOK0J_Y893PDQTBiiFv8-_W0pr9lqJyLBBnvrtB8dIk1d1kl3nyA6gCJclqWA1_HWV0Nb-K6g9AYdsGuGiFP2Lx5xJBQhb7zmJyR1JqfovKrpQxNoz7Ch6Lsk3atWLdkMLEfPrky9pNZXCs8bZ_0eXBAGt_649DgspPPwQJ"/>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="flex flex-col-reverse md:flex-row gap-6 border-b border-outline-variant pb-8 group">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1 h-1 rounded-full bg-tertiary-container"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Politics</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3 cursor-pointer group-hover:underline decoration-1 underline-offset-4">Global Coalition Proposes Stringent Data Sovereignty Framework</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">
+                            The new framework aims to standardize how multinational corporations handle cross-border data transfers, drawing mixed reactions from major tech lobbies.
+                        </p>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm font-label-md">
+<span>Global Tribune</span>
+<span>•</span>
+<span>4h ago</span>
+</div>
+</div>
+<div class="w-full md:w-[240px] h-[160px] md:h-auto shrink-0 relative overflow-hidden rounded">
+<img class="object-cover w-full h-full absolute inset-0" data-alt="A wide shot of a modern political assembly hall filled with delegates. Soft, diffused daylight filtering through large windows. Serious, corporate aesthetic. Deep blacks, whites, and subtle wood tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIdM-WPLNCA_zzsCW1g7h9Kb-28M7dAH7OZEU7lwsTopZ7RFk3w9dXIpCOGiB8II664OCl_8VvGO_jLAQKCDtmUDsbfNE78SAUhZVHYIWKXKnxG3M2gIZHIZQVeuVlzpVaXEuW5Rs80jpXgMx2187k2QHUEGpwUWr7rdAhb5Ov7TqQ84jDZ6RfuKK-ALR84eVu1CvU3nJi35t4yslPdtGmXReN5ooGFldry7_4iThub3pWtU_S1nko"/>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="flex flex-col-reverse md:flex-row gap-6 border-b border-outline-variant pb-8 group">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1 h-1 rounded-full bg-error"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Science</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3 cursor-pointer group-hover:underline decoration-1 underline-offset-4">Deep-Sea Expedition Uncovers Bioluminescent Ecosystem</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">
+                            Operating at depths previously thought uninhabitable, robotic submersibles have mapped an intricate network of organisms relying entirely on chemosynthesis.
+                        </p>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm font-label-md">
+<span>Nature Current</span>
+<span>•</span>
+<span>6h ago</span>
+</div>
+</div>
+<div class="w-full md:w-[240px] h-[160px] md:h-auto shrink-0 relative overflow-hidden rounded">
+<img class="object-cover w-full h-full absolute inset-0" data-alt="A high-contrast underwater photograph of bioluminescent sea creatures in the pitch black ocean depths. Glowing electric blue and neon green details against absolute black. Scientific, documentary style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR5F3wbnf46zajRVe87DAcssWmGk7moVPEmlJzbpIOiLExa5Bszg5rAV3I5ujTCzdlPh31lc5goMTI21quwO3PbM-I7tBBeI9hJdYdsQyXvHbMfJAMs9fNKQM-vhWm0T5_T9h43-Zb-6gJiSCkCo_Kb4JZr8KL59izHs9MThYDJrFrs1TnYzmqKcF5bHavoBG4QifD4trQzOiOAv3Y0uKpmuvbos0NEGzhPxUAqNWoUysIhPqcVRRV"/>
+</div>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest w-full py-stack-lg border-t border-outline-variant dark:border-outline mt-16">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-4 md:gap-0">
+<div class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary dark:text-inverse-primary">
+                Daily News
+            </div>
+<div class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface">
+                © 2024 Daily News. All rights reserved.
+            </div>
+<div class="flex gap-6 font-label-md text-label-md text-on-surface-variant dark:text-on-surface">
+<span class="hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 cursor-pointer">About</span>
+<span class="hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 cursor-pointer">GitHub</span>
+</div>
+</div>
+</footer>
+</body></html>
