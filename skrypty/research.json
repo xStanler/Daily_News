@@ -29,23 +29,29 @@
     "ekonomia": [
         {
             "Nazwa": "Business Insider Polska",
-            "Link": "https://businessinsider.com.pl"
+            "Link": "https://businessinsider.com.pl",
+	    "Selektor": ".list-driver a.item--xl"
+	    
         },
         {
             "Nazwa": "Bankier.pl",
-            "Link": "https://bankier.pl"
+            "Link": "https://bankier.pl",
+	    "Selektor": "#hotnews-box a.m-home-article-item__anchor"
         },
         {
             "Nazwa": "Rzeczpospolita-Ekonomia",
-            "Link": "https://rp.pl/ekonomia"
+            "Link": "https://rp.pl/ekonomia",
+	    "Selektor": "a.placement--img.contentLink"
         },
         {
             "Nazwa": "Puls Biznesu",
-            "Link": "https://pb.pl"
+            "Link": "https://pb.pl",
+	    "Selektor": "#main-topic-box .m-main-topic-item:first-child a"
         },
         {
             "Nazwa": "300Gospodarka",
-            "Link": "https://300gospodarka.pl"
+            "Link": "https://300gospodarka.pl",
+	    "Selektor": ".penci-owl-carousel .owl-item:not(.cloned) .item a"
         }
     ],
     "polityka": [

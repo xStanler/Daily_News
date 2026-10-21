@@ -88,9 +88,9 @@ def pobierz_artykul(kategoria):
             
     return {"kategoria": kategoria, "rezultaty": wyniki}
 if __name__=="__main__":
-    kategoria_do_testu="sport"
+    kategoria_do_testu="ekonomia"
 
-    print(f"pobieram:  {kategoria_do_testu}... \n")
+    print(f"pobieram:  {kategoria_do_testu }... \n")
     wyniki=pobierz_artykul(kategoria_do_testu)
 
     print(json.dumps(wyniki, indent=4, ensure_ascii=False))
