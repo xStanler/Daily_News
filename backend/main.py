@@ -105,11 +105,17 @@ def Download_arts(category):
 
                 if tag and 'href' in tag.attrs:
                     article_link = tag['href']
+                    
+                    if not article_link or article_link.startswith('#') or article_link.startswith('javascript:'):
+                        results.append({"Portal": nazwa, "Status": "Błędny format linku artykułu"})
+                        continue
+
                     if article_link.startswith('/'):
                         article_link = link.rstrip('/') + article_link
 
                     ready = Procesor(article_link, nazwa, headers)
                     results.append(ready)
+
                 else:
                     results.append({"Portal": nazwa, "Status": "Nie znaleziono linku pod wskazanym selektorem"})
             else:
