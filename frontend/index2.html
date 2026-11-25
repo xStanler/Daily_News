@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Daily News - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=Newsreader:wght@600;700&amp;family=Work+Sans:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/htmx.org@2.0.4"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#7c839b",
+                      "inverse-on-surface": "#eff1f3",
+                      "tertiary-container": "#00174b",
+                      "on-background": "#191c1e",
+                      "on-tertiary-fixed-variant": "#003ea8",
+                      "secondary-container": "#ffdc90",
+                      "surface-variant": "#e0e3e5",
+                      "on-surface": "#191c1e",
+                      "inverse-surface": "#2d3133",
+                      "on-secondary-fixed-variant": "#5a4304",
+                      "on-primary-fixed": "#131b2e",
+                      "secondary-fixed": "#ffdf9a",
+                      "inverse-primary": "#bec6e0",
+                      "tertiary-fixed": "#dbe1ff",
+                      "on-surface-variant": "#45464d",
+                      "primary-fixed-dim": "#bec6e0",
+                      "on-secondary-fixed": "#251a00",
+                      "background": "#f7f9fb",
+                      "tertiary-fixed-dim": "#b4c5ff",
+                      "primary-container": "#131b2e",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface-bright": "#f7f9fb",
+                      "surface-container-low": "#f2f4f6",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#000000",
+                      "on-secondary-container": "#785f20",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dae2fd",
+                      "on-tertiary-fixed": "#00174b",
+                      "error": "#ba1a1a",
+                      "outline": "#76777d",
+                      "surface-container-high": "#e6e8ea",
+                      "surface-dim": "#d8dadc",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "surface-container": "#eceef0",
+                      "on-primary": "#ffffff",
+                      "surface": "#f7f9fb",
+                      "surface-tint": "#565e74",
+                      "on-tertiary-container": "#497cff",
+                      "primary": "#000000",
+                      "secondary-fixed-dim": "#e4c379",
+                      "secondary": "#745b1c",
+                      "error-container": "#ffdad6",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c6c6cd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "unit": "4px",
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "stack-sm": "8px",
+                      "margin-desktop": "32px",
+                      "stack-lg": "32px",
+                      "stack-md": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "label-caps": ["Work Sans"],
+                      "headline-md": ["Newsreader"],
+                      "label-md": ["Work Sans"],
+                      "display-lg": ["Newsreader"],
+                      "display-lg-mobile": ["Newsreader"],
+                      "headline-sm": ["Newsreader"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        /* Component specific styles derived from Design System guidance */
+        .article-card {
+            border: 1px solid theme('colors.outline-variant');
+            transition: all 0.2s ease;
+        }
+        .article-card:hover {
+            border-color: theme('colors.primary');
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .ai-badge {
+            background-color: rgba(116, 91, 28, 0.1); /* Secondary with 10% opacity */
+            border: 1px solid theme('colors.secondary');
+            color: theme('colors.secondary');
+        }
+    </style>
+<script>
+    function selectButton(element) {
+        // Remove active class from all buttons
+        const buttons = document.querySelectorAll('.category-btn');
+        buttons.forEach(btn => {
+            btn.classList.remove('text-primary', 'border-b-2', 'border-primary');
+            btn.classList.add('text-on-surface-variant');
+        });
+        
+        // Add active class to clicked button
+        element.classList.remove('text-on-surface-variant');
+        element.classList.add('text-primary', 'border-b-2', 'border-primary');
+    }
+</script>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopNavBar Shared Component -->
+<header class="bg-surface-container-lowest text-primary w-full top-0 sticky border-b border-outline-variant z-50">
+<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto transition-all duration-200 ease-in-out">
+<!-- Brand Logo -->
+<a class="font-headline-md text-headline-md text-primary tracking-tight cursor-pointer" hx-get="/home" hx-target=".articles" onclick="selectButton(document.querySelector('.category-btn'))">Daily News</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer category-btn" hx-get="/articles/sport" hx-target=".articles" onclick="selectButton(this)">Sport</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer category-btn" hx-get="/articles/polityka" hx-target=".articles" onclick="selectButton(this)">Politics</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer category-btn" hx-get="/articles/technologia" hx-target=".articles" onclick="selectButton(this)">IT</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer category-btn" hx-get="/articles/ekonomia" hx-target=".articles" onclick="selectButton(this)">World</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer category-btn" hx-get="/articles/zdrowie" hx-target=".articles" onclick="selectButton(this)">Health</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer category-btn" hx-get="/articles/nauka" hx-target=".articles" onclick="selectButton(this)">Science</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-stack-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg gap-stack-lg">
+<!-- Category Filter Bar (Mobile Scrollable, Desktop Inline) -->
+<div class="w-full overflow-x-auto pb-2 -mx-margin-mobile px-margin-mobile md:hidden no-scrollbar border-b border-outline-variant">
+<div class="flex items-center gap-4 min-w-max">
+<button class="font-label-caps text-label-caps uppercase tracking-widest hover:text-primary pb-2 px-1 transition-colors text-primary border-b-2 border-primary category-btn" hx-get="/articles/sport" hx-target=".articles" onclick="selectButton(this)">Sport</button>
+<button class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary pb-2 px-1 transition-colors category-btn" hx-get="/articles/polityka" hx-target=".articles" onclick="selectButton(this)">Politics</button>
+<button class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary pb-2 px-1 transition-colors category-btn" hx-get="/articles/technologia" hx-target=".articles" onclick="selectButton(this)">IT</button>
+<button class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary pb-2 px-1 transition-colors category-btn" hx-get="/articles/ekonomia" hx-target=".articles" onclick="selectButton(this)">World</button>
+<button class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary pb-2 px-1 transition-colors category-btn" hx-get="/articles/zdrowie" hx-target=".articles" onclick="selectButton(this)">Health</button>
+<button class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary pb-2 px-1 transition-colors category-btn" hx-get="/articles/nauka" hx-target=".articles" onclick="selectButton(this)">Science</button>
+</div>
+</div>
+<div class="articles w-full flex flex-col gap-stack-lg" hx-get="/home" hx-trigger="load">
+<!-- Daily Digest Hero Section -->
+<section class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-margin-desktop shadow-sm flex flex-col md:flex-row gap-gutter">
+<!-- Hero Image/Graphic Placeholder -->
+<div class="w-full md:w-1/2 rounded aspect-video bg-surface-container flex items-center justify-center overflow-hidden">
+<div class="bg-cover bg-center w-full h-full" data-alt="A striking, high-contrast, minimalist photograph of a modern city intersection during dawn. The scene is illuminated by early morning light, creating deep shadows and bright, clean highlights on sleek glass buildings. A lone figure crosses the street, conveying a sense of start and focus. The palette is dominated by stark whites, deep blacks, and subtle cool blues, perfectly aligning with a modern, professional news aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7HshwqQ-KK9kLnhGlEnW65XwTXoeZcVY6jygY886CbW3FHwYaMlJN81h-iaBzIWwPujmJzX65fOrp4aKmK8_mb6-W7mjFi9TvJUUQ9DNKNfd-QJFFVwU7hiQ8YNtBCzBR8Qqy3SdeafoUXKFAkccOYi75678HmghZgjceJ-ZImkehfHm_ttarLnbKvpp_ew-w8LXZbxB1GaAmir9q0s_Nn37MPbc6Sj2Ai3HSsNPrAPPicecC1mqE')"></div>
+</div>
+<!-- Hero Content -->
+<div class="w-full md:w-1/2 flex flex-col justify-center gap-stack-md">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">Daily Digest</span>
+<span class="ai-badge inline-flex items-center gap-1 px-2 py-1 rounded-full font-label-caps text-label-caps uppercase">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                        AI Summary
+                    </span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary"><a class="hover:underline" href="https://example.com/global-markets-rally">Global Markets Rally Amidst Tech Sector Breakthroughs</a></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 border-l-2 border-primary pl-4">
+                    In today's top stories, an unexpected surge in renewable energy stocks propels international indices to record highs, while diplomatic talks in Geneva hint at a resolution to ongoing trade tariffs.
+                </p>
+</div>
+</section>
+<!-- Main Feed: Bento Grid Layout -->
+<section class="w-full grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Featured Card (Spans 8 cols) -->
+<article class="article-card col-span-1 md:col-span-8 bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col md:flex-row group cursor-pointer">
+<div class="w-full md:w-5/12 h-48 md:h-auto overflow-hidden">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="A high-contrast, black and white photograph of a political debate stage. The lighting is dramatic, highlighting the podiums against a dark, minimalist backdrop. The composition is strictly aligned and balanced, conveying authority and serious discourse, fitting for a premium digital newspaper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMqYrFSr-hyDTaEEjpvM9N2EdiSHZ9tcjO7MsYKSf7qpo1wSO--CK6jpcurQVcsQj3cRNfqn0noKdnMiC3HprSmGfWyJyNqgf8EAjvSiXBBW9laD-Cqtcpg5GlWJqClfaEWoxdXcff1OwTUFbIf9rhEkjAAyAA9QHuevhG7U_l5ibk4XygKh2c6ZeCNUkK3MNzlJNs0anXjZJfYWOTZuLbHLpV-1vEqqKkmhheDSaXg2RuyWYr4WfN"/>
+</div>
+<div class="p-stack-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1.5 h-1.5 rounded-full bg-error"></div> <!-- Accent dot for Politics -->
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Politics</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-2"><a class="hover:underline" href="https://example.com/urban-transit-legislation">New Legislation Proposed to Overhaul Urban Transit Networks</a></h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">
+                            Lawmakers have unveiled a comprehensive bipartisan bill aimed at modernizing aging public transportation infrastructure across major metropolitan areas, promising significant cuts to commute times and carbon emissions.
+                        </p>
+</div>
+<div class="mt-4 font-label-caps text-label-caps text-outline">
+                        2 hours ago • By Political Desk
+                    </div>
+</div>
+</article>
+<!-- Standard Card (Spans 4 cols) -->
+<article class="article-card col-span-1 md:col-span-4 bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col group cursor-pointer">
+<div class="w-full h-40 overflow-hidden">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="A clean, bright photograph of a robotic arm manipulating a delicate microchip in a sterile, white laboratory environment. The lighting is cool and clinical, emphasizing the precise, modern aesthetic of high-end IT and science reporting. High contrast between the silver metal and white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXESLoBShI_TfnSZXYeWdaBuJq5R-Iy76_T6wDZv5oHY4ZqYPcKJbS_f5bNxPhaUJQn3G-1Vm2cfi-jOVbYeovAD5wH7DhNyrQqwWoLX88LLzO5Dm5jUGKQSGKeokShCvuPYQT3JsTx990a01l_4aIp-5RJa2q2sI3SGR8zdfdunuvUpyCa1TgWsYt1dv589pXSxiAhByVGm_c0M6Q5dUB6UyrD5HQU7cek9XeU7Qv8bLLes5dYDUU"/>
+</div>
+<div class="p-stack-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></div> <!-- Accent dot for IT -->
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">IT</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2"><a class="hover:underline" href="https://example.com/quantum-processors">Next-Gen Quantum Processors Break Stability Records</a></h2>
+</div>
+<div class="mt-4 font-label-caps text-label-caps text-outline">
+                        4 hours ago
+                    </div>
+</div>
+</article>
+<!-- Standard Card (Spans 4 cols) -->
+<article class="article-card col-span-1 md:col-span-4 bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col group cursor-pointer">
+<div class="w-full h-40 overflow-hidden">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="An expansive, high-altitude aerial view of a dense, lush green rainforest canopy shrouded in thin morning mist. The image is crisp, with deep greens contrasting against the soft white fog. The composition is balanced and calming, representing environmental science and world news in a premium editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUNPAAHU7N5NT8WzZrK0tgj8MGiVBMcwJV36Lg0If5Cqg2K2fTcnZRa3h4dKsD-y186EG1pKrJh9KGeiYViD-QqECmViOPNY_J12NAVNVn6NmOZ9QssbBiv959tdmIRoo3X9rYza7-4LdOB5CfTQMIXJNkEhj_vtaHV5Vljd9e6MKShj8S7gp6W-EjqyIBkS1OzDc5uYJd63uoqM89sH-5JsCciHfanArNOicuEcauw4BX5Bz2ew7S"/>
+</div>
+<div class="p-stack-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Science</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2"><a class="hover:underline" href="https://example.com/deep-sea-ecosystems">Researchers Discover Uncharted Deep-Sea Ecosystems</a></h2>
+</div>
+<div class="mt-4 font-label-caps text-label-caps text-outline">
+                        5 hours ago
+                    </div>
+</div>
+</article>
+<!-- Text-only Card (Spans 4 cols) -->
+<article class="article-card col-span-1 md:col-span-4 bg-surface-container-lowest rounded-lg p-stack-md flex flex-col group cursor-pointer justify-between">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container"></div>
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">World</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary mb-3 group-hover:underline decoration-1 underline-offset-4"><a class="hover:underline" href="https://example.com/climate-summit">Summit Concludes with Ambitious Climate Targets</a></h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-4">
+                        International leaders have agreed to a revised timeline for carbon neutrality, pushing target dates forward by a decade. The agreement, while praised by environmental groups, faces significant hurdles in ratification among developing nations heavily reliant on fossil fuels.
+                    </p>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant font-label-caps text-label-caps text-outline flex justify-between items-center">
+<span class="">6 hours ago</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</article>
+<!-- Standard Card (Spans 4 cols) -->
+<article class="article-card col-span-1 md:col-span-4 bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col group cursor-pointer">
+<div class="w-full h-40 overflow-hidden">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="A close-up, highly detailed shot of a tennis racket hitting a brightly illuminated yellow ball against a stark black background. The lighting catches the spray of sweat and clay dust, freezing the intense action. The minimalist, high-contrast style fits perfectly with a premium sports editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVCWDJQtNQQnfbezr3MhZixD_XzaY6UgstZpAhABIEn1jS1mi9emuvFPbd1Kocoir7pA_a7otNpLQdS81kNj5XWfOjE1GwGdBjycNFBjWWEwTsYx0STqdoBSscui_L9s8UV8RZ_9JKIaIyRIYpaTTeYw3lZVUMroclcIn5ItVliR0VJiIIFWNHMVSY_tJ3Ka47P0Ip-qtgu6ewNqSlq4uc7TnAFHelWkz0WfaQAjweZmV92Bj1AlTL"/>
+</div>
+<div class="p-stack-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container"></div>
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Sport</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2"><a class="hover:underline" href="https://example.com/championship-victory">Underdog Claims Victory in Dramatic Championship Final</a></h2>
+</div>
+<div class="mt-4 font-label-caps text-label-caps text-outline">
+                        7 hours ago
+                    </div>
+</div>
+</article>
+</section>
+<!-- Load More Action -->
+<div class="w-full flex justify-center mt-4">
+<button class="px-6 py-2 border border-primary text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+                Load More Articles
+            </button>
+</div>
+</div>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-surface-container-lowest w-full py-stack-lg border-t border-outline-variant mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-4 md:gap-0">
+<div class="font-headline-sm text-headline-sm text-primary">
+                Daily News
+            </div>
+<div class="font-body-md text-body-md text-on-surface-variant text-center md:text-left">
+                © 2024 Daily News. Credits: Stanisław, Antoni, Paweł.
+            </div>
+<nav class="flex gap-4">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">About</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">GitHub</a>
+</nav>
+</div>
+</footer>
+</body></html>
